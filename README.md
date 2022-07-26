@@ -26,3 +26,22 @@ To run mutation tests:
 ```
 npm 
 ```
+
+## Transformation Priority Premise
+
+| Transformation | Notes |
+| -------------- | ----- |
+| `({} → nil)` | no code at all->code that employs nil |
+| `(nil → constant)` | |
+| `(constant → constant+)` | a simple constant to a more complex constant |
+| `(constant → scalar)` | replacing a constant with a variable or an argument |
+| `(statement → statements)` | adding more unconditional statements |
+| `(unconditional → if)` | splitting the execution path |
+| `(scalar → array)` | |
+| `(array → container)` | |
+| `(statement → recursion)` | |
+| `(if → while)` | |
+| `(expression → function)` | replacing an expression with a function or algorithm |
+| `(variable → assignment)` | replacing the value of a variable |
+
+Source: [Transformation Priority Premise](http://blog.cleancoder.com/uncle-bob/2013/05/27/TheTransformationPriorityPremise.html) by Robert C. Martin.
